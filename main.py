@@ -24,11 +24,17 @@ if __name__=='__main__':
             else:
                 count_files+=1
                 _, file_extension = os.path.splitext(path+"\\"+file)
-                # print(f"filename = {_}, extention = {file_extension}")
-                set_of_extensions.add(file_extension)
+                set_of_extensions.add(file_extension.replace(".",""))
 
-        print(f"dir  = {list_of_folders}")
-        print(f"set  = {set_of_extensions}")
+        # creating directories
+        for extention in set_of_extensions:
+            if not os.path.exists(path+"\\result\\"+str(extention)):
+                os.makedirs(path+"\\result\\"+str(extention))
+
+
+
+        print(f"dir  = {count_dirs}")
+        print(f"set  = {count_files}")
 
 
     else:
